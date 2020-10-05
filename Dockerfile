@@ -1,4 +1,4 @@
-FROM debian:wheezy
+FROM ubuntu:bionic
 
 LABEL maintainer="Jean-Sébastien Hedde <jeanseb@au-fil-du.net>, Guillaume LECERF <glecerf@gmail.com>"
 
@@ -9,7 +9,7 @@ RUN apt-get update -y && \
                        build-essential \
                        libpcap-dev \
                        libpcre3-dev \
-                       lib32ncurses5-dev \
+                       libncurses5-dev \
                        autoconf \
                        libtool \
                        ruby \
@@ -27,4 +27,4 @@ RUN cd /memkeys && \
                 --enable-static && \
     make
 RUN cd /memkeys/src/ && \
-    fpm -s dir -t deb --deb-no-default-config-files -n memkeys -m "Jean-Sebastien Hedde <jshedde@lafourchette.com>" -f -v 0.1 --prefix /usr/bin memkeys
+    fpm -s dir -t deb --deb-no-default-config-files -n memkeys -m "Jean-Sebastien Hedde <jshedde@lafourchette.com>" -f -v 0.1 --prefix /usr/local/bin memkeys
