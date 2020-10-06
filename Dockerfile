@@ -40,6 +40,6 @@ RUN cd /memkeys/src/ && \
         --url "https://github.com/ajm188/memkeys" \
         -m "Andrew Mason <amason@slack-corp.com>" \
         -f \
-        -v 0.1 \
+        -v 0.2-1-2 \
         --prefix /usr/local/bin \
         memkeys
