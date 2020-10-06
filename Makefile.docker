@@ -1,8 +1,13 @@
 NAME=memkeys-build
 TAG=latest
 
-all:
-	docker build --force-rm -t $(NAME):$(TAG) .
+all: xenial bionic
+
+xenial:
+	docker build --build-arg distro=$@ --force-rm -t $(NAME)-$@:$(TAG) .
+
+bionic:
+	docker build --build-arg distro=$@ --force-rm -t $(NAME)-$@:$(TAG) .
 
 nocache:
 	docker build --force-rm --no-cache -t $(NAME):$(TAG) .
@@ -11,4 +16,5 @@ extractbinary:
 	docker run -it --rm -v $(shell pwd)/src:/local memkeys-build:latest cp /memkeys/src/memkeys /local/
 
 extractpackage:
-	docker run -it --rm -v $(shell pwd)/src:/local memkeys-build:latest cp /memkeys/src/memkeys_0.1_amd64.deb /local/
+	docker run -it --rm -v $(shell pwd)/src:/local memkeys-build-xenial:latest cp /memkeys/src/memkeys_0.1_amd64.deb /local/memkeys_0.1_xenial_amd64.deb
+	docker run -it --rm -v $(shell pwd)/src:/local memkeys-build-bionic:latest cp /memkeys/src/memkeys_0.1_amd64.deb /local/memkeys_0.1_bionic_amd64.deb

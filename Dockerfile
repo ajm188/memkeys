@@ -1,6 +1,7 @@
-FROM ubuntu:bionic
+ARG distro=bionic
+FROM ubuntu:${distro}
 
-LABEL maintainer="Jean-Sébastien Hedde <jeanseb@au-fil-du.net>, Guillaume LECERF <glecerf@gmail.com>"
+LABEL maintainer="Andrew Mason <amason@slack-corp.com>, Regrets <null@void>"
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -30,6 +31,7 @@ RUN cd /memkeys/src/ && \
         -s dir \
         -t deb \
         -a "x86_64" \
+        --depends libncurses5-dev \
         --depends libpcap-dev \
         --depends libpcre3-dev \
         --deb-no-default-config-files \
