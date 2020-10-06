@@ -14,8 +14,7 @@ RUN apt-get update -y && \
                        libtool \
                        ruby \
                        ruby-dev \
-                       rubygems \
-                       build-essential && \
+                       rubygems && \
     gem install --no-ri --no-rdoc fpm
 
 
