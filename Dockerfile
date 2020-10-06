@@ -27,4 +27,4 @@ RUN cd /memkeys && \
                 --enable-static && \
     make
 RUN cd /memkeys/src/ && \
-    fpm -s dir -t deb --deb-no-default-config-files -n memkeys -m "Jean-Sebastien Hedde <jshedde@lafourchette.com>" -f -v 0.1 --prefix /usr/local/bin memkeys
+    fpm -s dir -t deb --depends libpcap-dev --depends libpcre3-dev --deb-no-default-config-files -n memkeys -m "Jean-Sebastien Hedde <jshedde@lafourchette.com>" -f -v 0.1 --prefix /usr/local/bin memkeys
